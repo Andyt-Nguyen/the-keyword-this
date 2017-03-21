@@ -69,9 +69,13 @@ var getYear = function(){
 
 //Note(no tests)
   //Code Here
-Car.prototype.getYear = getYear;
-console.log(prius.getYear());
-console.log(mustang.getYear());
+	var priusYear = getYear.bind(prius);
+	console.log(priusYear());
+	var mustangYear = getYear.bind(mustang);
+	console.log(mustangYear());
+// Car.prototype.getYear = getYear;
+// console.log(prius.getYear());
+// console.log(mustang.getYear());
 
 //New Problem
 
@@ -82,10 +86,10 @@ var myUser = {
 };
 
 var getMyUsername = function() {
- return myUser.username;
+ return this.username;
 };
 
-var userName = getMyUsername(); //Fix this
+var userName = getMyUsername.call(myUser); //Fix this
 
 //Above you're given an object, and  a function. What will the getMyUsername function return?
 //Note(no tests)
@@ -97,4 +101,3 @@ var userName = getMyUsername(); //Fix this
 
 
 //Fix the getMyUsername invocation (stored in the userName variable, at the bottom of the above code) so that userName will be equal to 'iliketurtles'.
-console.log(userName);
