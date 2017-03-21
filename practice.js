@@ -2,19 +2,19 @@
   // 1) What is the purpose of the 'this keyword'?
 
       //Answer
-
+			//////////////////The this key work is used to reference a certain object to make contstruction fxns easier to use and reusable. Not only its used alot to keep things fast and easy going
   // 2) What are the four rules that govern what the 'this keyword' is bound to and describe each?
 
       //Answer
-
+			///-------------
   // 3) What is the difference between call and apply?
 
       //Answer
-
+//================================
   // 4) What does .bind do?
 
       //Answer
-
+//==========================================
 
 //Next Problem
 
@@ -24,15 +24,29 @@
   //getUsername --> which is a function that returns the current object's username property. *Don't use 'user' instead use the 'this' keyword*
 
     //Code Here
-
+var user = {
+	username: "Andy",
+	email: "andy@andy.com",
+	getUsername: function(){
+		return this.username;
+	}
+}
 //Now, invoke the getUsername method and verify you got the username of the object and not anything else.
-
+	console.log(user.getUsername());
 
 //Next Problem
 
 
 // Write a constructor function, including method definitions, which will make the following function invocations function properly.
-
+function Car(make, model, year){
+	this.make = make;
+	this.model = model;
+	this.year = year;
+	this.speed = 50
+	this.moveCar = function(){
+		return this.speed += 10
+	}
+}
   //Function Invocations Here
 
 var prius = new Car('Toyota', 'Prius', 2011);
@@ -40,8 +54,8 @@ var mustang = new Car('Ford', 'Mustang', 2013);
 
 //Hint, you'll need to add a move property, with a starting value of zero, and write a moveCar function which will increment the move property by 10. The move property will be added to every object that is being returned from the Car function. You'll also need to use the 'this' keyword properly in order to make sure you're invoking moveCar on the right object (prius vs mustang).
 
-prius.moveCar(); //increments prius' move property by 10. Returns the new move property.
-mustang.moveCar(); //increments mustang' move property by 10. Returns the new move property.
+console.log(prius.moveCar()); //increments prius' move property by 10. Returns the new move property.
+console.log(mustang.moveCar()); //increments mustang' move property by 10. Returns the new move property.
 
 
 
@@ -55,7 +69,9 @@ var getYear = function(){
 
 //Note(no tests)
   //Code Here
-
+Car.prototype.getYear = getYear;
+console.log(prius.getYear());
+console.log(mustang.getYear());
 
 //New Problem
 
@@ -66,7 +82,7 @@ var myUser = {
 };
 
 var getMyUsername = function() {
- return this.username;
+ return myUser.username;
 };
 
 var userName = getMyUsername(); //Fix this
@@ -81,4 +97,4 @@ var userName = getMyUsername(); //Fix this
 
 
 //Fix the getMyUsername invocation (stored in the userName variable, at the bottom of the above code) so that userName will be equal to 'iliketurtles'.
-
+console.log(userName);
